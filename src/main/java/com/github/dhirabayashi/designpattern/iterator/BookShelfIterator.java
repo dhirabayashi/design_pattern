@@ -1,6 +1,8 @@
 package com.github.dhirabayashi.designpattern.iterator;
 
-public class BookShelfIterator implements Iterator {
+import java.util.Iterator;
+
+public class BookShelfIterator implements Iterator<Book> {
     private final BookShelf bookShelf;
     private int index;
 
@@ -15,7 +17,7 @@ public class BookShelfIterator implements Iterator {
     }
 
     @Override
-    public Object next() {
+    public Book next() {
         return bookShelf.getBookAt(index++);
     }
 }

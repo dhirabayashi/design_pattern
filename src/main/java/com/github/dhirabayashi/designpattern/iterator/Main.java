@@ -7,9 +7,7 @@ public class Main {
         bookShelf.appendBook(new Book("リーダブルコード"));
         bookShelf.appendBook(new Book("Effective Java"));
 
-        var iterator = bookShelf.iterator();
-        while(iterator.hasNext()) {
-            Book book = (Book) iterator.next();
+        for (Book book : bookShelf) {
             System.out.println(book.getName());
         }
     }
