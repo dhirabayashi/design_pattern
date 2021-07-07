@@ -12,17 +12,17 @@ public class StringDisplay extends Display {
     }
 
     @Override
-    void open() {
+    protected void open() {
         printLine();
     }
 
     @Override
-    void print() {
+    protected void print() {
         System.out.println("|" + str + "|");
     }
 
     @Override
-    void close() {
+    protected void close() {
         printLine();
     }
 

@@ -8,17 +8,17 @@ public class CharDisplay extends Display {
     }
 
     @Override
-    void open() {
+    protected void open() {
         System.out.print("<<");
     }
 
     @Override
-    void print() {
+    protected void print() {
         System.out.print(aChar);
     }
 
     @Override
-    void close() {
+    protected void close() {
         System.out.println(">>");
     }
 }
