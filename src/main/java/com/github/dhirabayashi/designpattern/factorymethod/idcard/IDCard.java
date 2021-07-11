@@ -4,10 +4,12 @@ import com.github.dhirabayashi.designpattern.factorymethod.framework.Product;
 
 public class IDCard extends Product {
     private final String owner;
+    private final int number;
 
-    public IDCard(String owner) {
+    IDCard(String owner, int number) {
         System.out.println(owner + "のカードを作ります。");
         this.owner = owner;
+        this.number = number;
     }
 
     @Override
