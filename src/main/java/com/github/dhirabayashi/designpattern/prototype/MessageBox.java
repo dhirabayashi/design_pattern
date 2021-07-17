@@ -1,7 +1,6 @@
 package com.github.dhirabayashi.designpattern.prototype;
 
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 
 public class MessageBox implements Product {
     private final char aChar;
