@@ -2,7 +2,7 @@ package com.github.dhirabayashi.designpattern.prototype;
 
 import java.nio.charset.Charset;
 
-public class UnderlinePen implements Product {
+public class UnderlinePen extends AbstractProduct {
     private final char aChar;
 
     public UnderlinePen(char aChar) {
@@ -19,15 +19,5 @@ public class UnderlinePen implements Product {
             System.out.print(aChar);
         }
         System.out.println();
-    }
-
-    @Override
-    public Product createClone() {
-        try {
-            return (Product) clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 }

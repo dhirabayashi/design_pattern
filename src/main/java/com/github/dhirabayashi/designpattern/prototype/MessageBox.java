@@ -2,7 +2,7 @@ package com.github.dhirabayashi.designpattern.prototype;
 
 import java.nio.charset.Charset;
 
-public class MessageBox implements Product {
+public class MessageBox extends AbstractProduct {
     private final char aChar;
 
     public MessageBox(char aChar) {
@@ -22,15 +22,5 @@ public class MessageBox implements Product {
             System.out.print(aChar);
         }
         System.out.println();
-    }
-
-    @Override
-    public Product createClone() {
-        try {
-            return (Product) clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 }
