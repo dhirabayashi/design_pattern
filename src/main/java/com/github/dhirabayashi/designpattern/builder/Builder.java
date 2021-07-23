@@ -26,7 +26,10 @@ public abstract class Builder {
 
     public void close() {
         checkInitialized();
+        checkClosed();
+
         abstractClose();
+        closed = true;
     }
 
     private void checkInitialized() {
