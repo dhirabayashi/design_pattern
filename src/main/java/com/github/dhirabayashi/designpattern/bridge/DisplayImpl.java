@@ -1,4 +1,7 @@
 package com.github.dhirabayashi.designpattern.bridge;
 
-public class DisplayImpl {
+public interface DisplayImpl {
+   void rawOpen();
+   void rawPrint();
+   void rawClose();
 }
