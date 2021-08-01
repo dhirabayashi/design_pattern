@@ -19,5 +19,8 @@ public class Main {
             var fd = new CountDisplay(impl);
             fd.multiDisplay(3);
         }
+
+        var d5 = new IncrementalDisplay(new CharDisplayImpl('<', '*', '>'));
+        d5.incrementalDisplay(4);
     }
 }

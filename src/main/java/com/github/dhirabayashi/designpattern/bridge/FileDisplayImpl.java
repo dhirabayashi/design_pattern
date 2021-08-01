@@ -32,7 +32,6 @@ public class FileDisplayImpl implements DisplayImpl, Closeable {
                 while((line = reader.readLine()) != null) {
                     content.add(line);
                 }
-                reader.mark(0);
             } catch (IOException e) {
                 throw new UncheckedIOException(e);
             }
