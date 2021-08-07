@@ -1,6 +1,7 @@
 package com.github.dhirabayashi.designpattern.composite;
 
 public abstract class Entry {
+    protected Entry parent;
     public abstract String getName();
 
     public abstract int getSize();
@@ -14,6 +15,16 @@ public abstract class Entry {
     }
 
     protected abstract void printList(String prefix);
+
+    public String getFullName() {
+        var fullName = new StringBuilder();
+        var entry = this;
+        do {
+            fullName.insert(0, "/" + entry.getName());
+            entry = entry.parent;
+        } while(entry != null);
+        return fullName.toString();
+    }
 
     @Override
     public String toString() {

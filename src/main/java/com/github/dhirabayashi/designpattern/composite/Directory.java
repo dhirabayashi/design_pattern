@@ -28,6 +28,7 @@ public class Directory extends Entry {
     @Override
     public Entry add(Entry entry) {
         directory.add(entry);
+        entry.parent = this;
         return this;
     }
 
