@@ -1,4 +1,5 @@
 package com.github.dhirabayashi.designpattern.visitor;
 
-public class Element {
+public interface Element {
+    void accept(Visitor v);
 }
