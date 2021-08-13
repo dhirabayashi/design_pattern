@@ -30,5 +30,15 @@ public class Main {
         tomura.add(new File("game.doc", 400));
         tomura.add(new File("junk.mail", 500));
         rootDir.accept(new ListVisitor());
+
+        var ffv = new FileFindVisitor(".html");
+        rootDir.accept(ffv);
+
+        System.out.println("HTML files are:");
+        var it = ffv.getFoundFiles();
+        while(it.hasNext()) {
+            var file = it.next();
+            System.out.println(file);
+        }
     }
 }
