@@ -25,11 +25,7 @@ public class Directory extends Entry {
 
     @Override
     public int getSize() {
-        var size = 0;
-        for(var entry : dir) {
-            size += entry.getSize();
-        }
-        return size;
+        throw new UnsupportedOperationException("Use SizeVisitor.");
     }
 
     @Override

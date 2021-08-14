@@ -40,5 +40,10 @@ public class Main {
             var file = it.next();
             System.out.println(file);
         }
+
+        System.out.println("File size:");
+        var sv = new SizeVisitor();
+        rootDir.accept(sv);
+        System.out.println(sv.getSize());
     }
 }
