@@ -45,5 +45,12 @@ public class Main {
         var sv = new SizeVisitor();
         rootDir.accept(sv);
         System.out.println(sv.getSize());
+
+        System.out.println("ElementArrayList:");
+        var list = new ElementArrayList();
+        list.add(rootDir);
+        list.add(new File("etc.html", 1234));
+
+        list.accept(new ListVisitor());
     }
 }
