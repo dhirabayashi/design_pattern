@@ -14,12 +14,25 @@ public abstract class Support {
     }
 
     public final void support(Trouble trouble) {
-        if(resolve(trouble)) {
-            done(trouble);
-        } else if(next != null) {
-            next.support(trouble);
-        } else {
-            fail(trouble);
+        //if(resolve(trouble)) {
+        //    done(trouble);
+        //} else if(next != null) {
+        //    next.support(trouble);
+        //} else {
+        //    fail(trouble);
+        //}
+        boolean resolved = false;
+        Support lastSupport = null;
+        for(var support = this; support != null; support = support.next) {
+            lastSupport = support;
+            if(support.resolve(trouble)) {
+                support.done(trouble);
+                resolved = true;
+                break;
+            }
+        }
+        if(!resolved) {
+            lastSupport.fail(trouble);
         }
     }
 
