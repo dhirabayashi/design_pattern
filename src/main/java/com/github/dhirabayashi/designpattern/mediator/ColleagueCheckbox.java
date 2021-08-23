@@ -1,14 +1,14 @@
 package com.github.dhirabayashi.designpattern.mediator;
 
 import java.awt.*;
-import java.awt.event.TextEvent;
-import java.awt.event.TextListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
-public class ColleagueTextField extends TextField implements TextListener, Colleague {
+public class ColleagueCheckbox extends Checkbox implements ItemListener, Colleague {
     private Mediator mediator;
 
-    public ColleagueTextField(String text, int columns) {
-        super(text, columns);
+    public ColleagueCheckbox(String caption, CheckboxGroup group, boolean state) {
+        super(caption, group, state);
     }
 
     @Override
@@ -19,11 +19,10 @@ public class ColleagueTextField extends TextField implements TextListener, Colle
     @Override
     public void setColleagueEnabled(boolean enabled) {
         setEnabled(enabled);
-        setBackground(enabled ? Color.white : Color.lightGray);
     }
 
     @Override
-    public void textValueChanged(TextEvent e) {
+    public void itemStateChanged(ItemEvent e) {
         mediator.colleagueChanged();
     }
 }
