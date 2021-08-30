@@ -1,6 +1,8 @@
 package com.github.dhirabayashi.designpattern.memento.game
 
-class Memento(private val money: Int) {
+import java.io.Serializable
+
+class Memento(private val money: Int) : Serializable {
     private val fruits = mutableListOf<String>()
 
     fun getMoney(): Int {

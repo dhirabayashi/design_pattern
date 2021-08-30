@@ -1,13 +1,19 @@
 package com.github.dhirabayashi.designpattern.memento.game
 
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
+import java.nio.file.Files
+import java.nio.file.Path
 import java.util.concurrent.ThreadLocalRandom
 
-class Gamer(private var money: Int) {
+class Gamer {
+    private var money: Int = 0
     private var fruits = mutableListOf<String>()
     private val random = ThreadLocalRandom.current()
 
     companion object {
         val fruitsName = arrayOf("りんご", "ぶどう", "バナナ", "みかん")
+        val datPath: Path = Path.of("game.dat")
     }
 
     fun getMoney(): Int {
@@ -35,7 +41,7 @@ class Gamer(private var money: Int) {
         }
     }
 
-    fun createMemento(): Memento {
+    private fun createMemento(): Memento {
         val m = Memento(money)
         for(f in fruits) {
             if(f.startsWith("おいしい")) {
@@ -45,7 +51,28 @@ class Gamer(private var money: Int) {
         return m
     }
 
-    fun restoreMemento(memento: Memento) {
+    fun writeMemento(): Memento {
+        val memento = createMemento()
+        ObjectOutputStream(Files.newOutputStream(datPath)).use {
+            it.writeObject(memento)
+        }
+        return memento
+    }
+
+    fun readMemento(): Memento {
+        val memento: Memento
+        if(Files.exists(datPath)) {
+            ObjectInputStream(Files.newInputStream(datPath)).use {
+                memento = it.readObject() as Memento
+            }
+        } else {
+            memento = Memento(100)
+        }
+        restoreMemento(memento)
+        return memento
+    }
+
+    private fun restoreMemento(memento: Memento) {
         this.money = memento.getMoney()
         this.fruits = memento.getFruits()
     }
