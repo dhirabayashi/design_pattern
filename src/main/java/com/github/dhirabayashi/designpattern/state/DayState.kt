@@ -4,6 +4,8 @@ object DayState : State {
     override fun doClock(context: Context, hour: Int) {
         if(hour < 9 || 17 <= hour) {
             context.changeState(NightState)
+        } else if(hour == 12) {
+            context.changeState(LunchState)
         }
     }
 
@@ -13,6 +15,7 @@ object DayState : State {
 
     override fun doAlarm(context: Context) {
         context.callSecurityCenter("非常ベル(昼間)")
+        context.changeState(EmergencyState)
     }
 
     override fun doPhone(context: Context) {

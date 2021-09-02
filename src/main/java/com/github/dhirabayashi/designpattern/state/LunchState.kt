@@ -1,28 +1,28 @@
 package com.github.dhirabayashi.designpattern.state
 
-object NightState : State{
+object LunchState : State {
     override fun doClock(context: Context, hour: Int) {
-        if(hour in 9..11 || hour in 13..16) {
+        if(hour < 9 || 17 <= hour) {
+            context.changeState(NightState)
+        } else if(hour in 9..11 || hour in 13..16) {
             context.changeState(DayState)
-        } else if(hour == 12) {
-            context.changeState(LunchState)
         }
     }
 
     override fun doUse(context: Context) {
-        context.callSecurityCenter("非常：夜間の金庫使用！")
+        context.callSecurityCenter("非常：昼食時の金庫使用！")
     }
 
     override fun doAlarm(context: Context) {
-        context.callSecurityCenter("非常ベル(夜間)")
+        context.callSecurityCenter("非常ベル(昼食時)")
         context.changeState(EmergencyState)
     }
 
     override fun doPhone(context: Context) {
-        context.recordLog("夜間の通話録音")
+        context.recordLog("昼食時の通話録音")
     }
 
     override fun toString(): String {
-        return "[夜間]"
+        return "[昼食時]"
     }
 }
