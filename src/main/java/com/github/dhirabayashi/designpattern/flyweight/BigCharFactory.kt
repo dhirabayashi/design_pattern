@@ -1,4 +1,15 @@
 package com.github.dhirabayashi.designpattern.flyweight
 
-class BigCharFactory {
+object BigCharFactory {
+    private val pool = mutableMapOf<Char, BigChar>()
+
+    @Synchronized
+    fun getBigChar(charName: Char): BigChar {
+        var bc = pool[charName]
+        if(bc == null) {
+            bc = BigChar(charName)
+            pool[charName] = bc
+        }
+        return bc
+    }
 }
