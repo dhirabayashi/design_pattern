@@ -1,11 +1,15 @@
 package com.github.dhirabayashi.designpattern.flyweight
 
-class BigString(val string: String) {
+class BigString(val string: String, shared: Boolean = true) {
     private val bigChars = mutableListOf<BigChar>()
 
     init {
         for(char in string.toCharArray()) {
-            bigChars.add(BigCharFactory.getBigChar(char))
+            if(shared) {
+                bigChars.add(BigCharFactory.getBigChar(char))
+            } else {
+                bigChars.add(BigChar(char))
+            }
         }
     }
 
