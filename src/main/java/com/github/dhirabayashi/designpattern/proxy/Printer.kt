@@ -25,6 +25,6 @@ class Printer(private var name: String) : Printable {
             Thread.sleep(1000)
             kotlin.io.print(".")
         }
-        kotlin.io.println("完了。")
+        println("完了。")
     }
 }
