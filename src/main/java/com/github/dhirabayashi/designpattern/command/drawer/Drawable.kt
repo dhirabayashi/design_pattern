@@ -1,4 +1,5 @@
 package com.github.dhirabayashi.designpattern.command.drawer
 
-class Drawable {
+interface Drawable {
+    fun draw(x: Int, y: Int)
 }

@@ -1,4 +1,5 @@
 package com.github.dhirabayashi.designpattern.command.command
 
-class Command {
+interface Command {
+    fun execute()
 }
