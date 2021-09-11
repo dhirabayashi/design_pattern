@@ -6,7 +6,7 @@ import java.awt.Color
 import java.awt.Graphics
 
 class DrawCanvas(width: Int, height: Int, private val history: MacroCommand) : Drawable, Canvas() {
-    private val color = Color.red
+    var color = Color.red
 
     private val radius = 6
 
