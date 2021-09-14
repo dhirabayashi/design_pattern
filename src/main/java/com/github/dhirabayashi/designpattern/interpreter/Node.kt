@@ -1,4 +1,5 @@
 package com.github.dhirabayashi.designpattern.interpreter
 
-class Node {
+interface Node {
+    fun parse(context: Context)
 }

@@ -1,4 +1,4 @@
 package com.github.dhirabayashi.designpattern.interpreter
 
-class ParseException {
+class ParseException(msg: String) : Exception(msg) {
 }
